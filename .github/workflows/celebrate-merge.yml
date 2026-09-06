@@ -1,0 +1,19 @@
+name: Celebrate merge
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  celebrate:
+    if: github.event.pull_request.merged && github.event.pull_request.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      # Pin the commit, not the tag: this job runs on pull_request_target
+      # with pull-requests: write.
+      - uses: YauhenBichel/merge-cheer@98410329504af94a63baffe32ba35e6e38030054 # v1.4.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
