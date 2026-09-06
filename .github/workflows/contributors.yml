@@ -1,0 +1,34 @@
+name: Contributors
+
+on:
+  schedule:
+    - cron: "17 4 * * 0"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  readme:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+
+      - uses: YauhenBichel/readme-contributors@dde1d84bb305e531a8f923263791b0767a6bdd7c # v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push the list
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add README.md README readme.md .github/contributors.svg
+          git diff --cached --quiet && exit 0
+          git commit -m "docs: refresh README contributors"
+          git push
