@@ -1,0 +1,12 @@
+name: Celebrate merge
+on:
+  pull_request_target:
+    types: [closed]
+permissions:
+  pull-requests: write
+jobs:
+  celebrate:
+    if: github.event.pull_request.merged && github.event.pull_request.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: YauhenBichel/merge-cheer@v1
