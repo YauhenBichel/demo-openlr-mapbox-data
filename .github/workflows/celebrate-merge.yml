@@ -9,4 +9,4 @@ jobs:
     if: github.event.pull_request.merged && github.event.pull_request.user.type != 'Bot'
     runs-on: ubuntu-latest
     steps:
-      - uses: YauhenBichel/merge-cheer@v1.2.0
+      - uses: YauhenBichel/merge-cheer@v1.3.0
