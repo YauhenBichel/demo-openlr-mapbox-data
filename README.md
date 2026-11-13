@@ -3,9 +3,9 @@
 Reading and decoding OpenLR location references against Mapbox map data: a
 worked example of map-matching between two different road network providers.
 
-> **Status.** The write-up below is complete. The reference implementation is
-> not published yet. If you came here for working code, the issues are the
-> place to say so, and it will move up.
+> **Status.** The write-up below is complete. A reference implementation is in
+> [`traffic-demo/`](traffic-demo): parsing, map matching, routing and congestion
+> analysis on a small synthetic sample (see its README to run it).
 
 ## The problem
 

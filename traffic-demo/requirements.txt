@@ -1,0 +1,6 @@
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+folium>=0.14
+openlr>=1.0
+branca>=0.6
