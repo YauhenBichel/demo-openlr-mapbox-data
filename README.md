@@ -5,7 +5,40 @@ worked example of map-matching between two different road network providers.
 
 > **Status.** The write-up below is complete. A reference implementation is in
 > [`traffic-demo/`](traffic-demo): parsing, map matching, routing and congestion
-> analysis on a small synthetic sample (see its README to run it).
+> analysis on a small synthetic sample.
+
+## Try it
+
+You need Python 3.10 or newer. No Mapbox account or token is needed: the demo
+runs on a small synthetic sample file that is in the repository.
+
+```bash
+git clone https://github.com/YauhenBichel/demo-openlr-mapbox-data
+cd demo-openlr-mapbox-data/traffic-demo
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+python main.py --sample
+```
+
+It prints, among other things (shortened):
+
+```text
+[1/5] Parsing traffic data...
+Loaded 20 road segments from sample-Washington_DC.csv.gz
+  Speed data: 2016 intervals (7 days x 288 five-min slots)
+  OpenLR: C0k33LdVrk0JBRT/M08=...
+
+TRAFFIC CONGESTION REPORT
+Total segments analyzed: 20
+Average congestion index: 0.14
+Segments with heavy congestion (CI > 0.3): 0
+```
+
+and writes maps (`traffic_map_speed.html`, `traffic_map_congestion.html`), charts
+and a congestion report to `traffic-demo/output/`. The 26 tests run with
+`pip install pytest && python -m pytest traffic-demo`. Real Mapbox traffic files
+are not included; the demo reads one if you pass `--file <path.csv.gz>` and have a
+licence for that data.
 
 ## The problem
 

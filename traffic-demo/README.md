@@ -50,6 +50,8 @@ Mapbox typical-speed files (OpenLR variant):
 
 ## Setup
 
+Python 3.10 or newer (the code uses `str | Path` type hints).
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -66,6 +68,6 @@ python main.py --file data/0320122-America-New_York.csv.gz
 
 ## Output
 
-- `output/traffic_map.html` — Interactive map with speed-colored segments
+- `output/traffic_map_speed.html` and `output/traffic_map_congestion.html` — Interactive maps with speed-colored and congestion-colored segments
 - `output/speed_profiles.png` — Weekly speed profile charts
 - `output/congestion_report.txt` — Top congested segments and stats
